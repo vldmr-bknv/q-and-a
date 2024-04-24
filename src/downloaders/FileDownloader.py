@@ -19,8 +19,9 @@ class FileDownloader:
         try:
             print("PDF downloading: ")
             filename = wget.download(source,
-                          bar=wget.bar_thermometer,
+                          bar=wget.bar_adaptive,
                           out=self.path)
+            print("\n")
             return filename
         except Exception as e:
             logger.error(f"{source} downloading: {e}")

@@ -24,7 +24,7 @@ class TestEmbedder:
     def _embedder_init(self):
         try:
             embeddings = HuggingFaceEmbeddings(model_name=self.model_name, 
-                                           model_kwargs={'device': self.device})
+                                               model_kwargs={'device': self.device})
             self.embeddings = embeddings
         except Exception as e:
             logger.error(f"Initialization: {e}")
