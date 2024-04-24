@@ -39,6 +39,12 @@ def get_prompt():
 
 
 def main():
+    '''Receives data from the user. 
+    Downloads a file, converts it to a string type and tokenizes it. 
+    Gets embeddings, saves context in FAISS. 
+    Generates a system prompt and initializes the LLM. 
+    Looks up the context of the question in FAISS, returns the answer using the LLM.'''
+    
     arg_parser = argparse.ArgumentParser(description="The program answers the question about the document.",
                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
@@ -56,13 +62,15 @@ def main():
         logger.error("LLM not found!")
         return
     
+    # LLM initialization
     try:
         llm = GPT4All(model=f"./{LLM_NAME}", device=device)
     except Exception as e:
         logger.error(f"LLM initialize: {e}")
         return
     
-    # Downloading a file
+    # Downloading a file to ./data
+    os.makedirs("data", exist_ok=True)
     downloader = FileDownloader("data")
     pdf_filename = downloader(source)
     
