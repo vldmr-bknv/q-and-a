@@ -1,12 +1,15 @@
 import argparse
+import os
 
 from src.downloaders.FileDownloader import FileDownloader
 from src.parsers.ToyPdfParser import ToyPdfParser
 from src.embedders.TestEmbedder import TestEmbedder
 
-def file_download():
-    downloader = FileDownloader()
-    downloader.hello()
+LLM_NAME = "gpt4all-falcon-newbpe-q4_0.gguf"
+
+def file_download(source, path):
+    downloader = FileDownloader(path)
+    downloader(source)
 
 
 def get_sentences():
@@ -42,8 +45,11 @@ def main():
     question = args['question']
     device = args['device']
 
+    if LLM_NAME not in os.listdir('.'):
+        print("LLM not found!")
+    
     # File (model and documet downloading)
-    file_download()
+    pdf_filename = file_download(source, "data")
 
     # Document parsing
     get_sentences()
