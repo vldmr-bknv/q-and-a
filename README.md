@@ -8,9 +8,9 @@ This is a test program for answering questions about the context of a PDF docume
 - git pull master
 - pip install -r requirements.txt
 - [Download gpt4all-falcon-newbpe-q4_0 model](https://gpt4all.io/models/gguf/gpt4all-falcon-newbpe-q4_0.gguf) to the root of this project. You can also use a *downloading_the_model.sh* for this.
-- python3 answer_the_question.py -s [SOURCE] -q [QUESTION] -d [DEVICE]
+- *python3 answer_the_question.py -s [SOURCE] -q [QUESTION] -d [DEVICE]*
 
-You can use python3 answer_the_question.py -h for more information.
+You can use *python3 answer_the_question.py -h* for more information.
 
 ## Example
 Answering questions in the context of a [file](https://lingua.com/pdf/english-text-washington.pdf)
