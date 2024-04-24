@@ -13,7 +13,7 @@ This is a test program for answering questions about the context of a PDF docume
 You can use *python3 answer_the_question.py -h* for more information.
 
 ## Example
-Answering questions in the context of a [file](https://lingua.com/pdf/english-text-washington.pdf)
+Answering questions based on the context of a [file](https://lingua.com/pdf/english-text-washington.pdf)
 ![alt text](http://kappa.cs.petrsu.ru/~bakanov/example1.png)
 
 ![alt text](http://kappa.cs.petrsu.ru/~bakanov/example2.png)
