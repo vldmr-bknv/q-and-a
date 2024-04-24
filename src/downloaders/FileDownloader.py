@@ -4,7 +4,7 @@ import logging
 logger = logging.getLogger('FILE DOWNLOADER')
 logger.setLevel(logging.DEBUG)
 log_channel = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
 log_channel.setFormatter(formatter)
 logger.addHandler(log_channel)
 
