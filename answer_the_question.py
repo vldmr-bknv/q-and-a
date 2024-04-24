@@ -9,12 +9,12 @@ LLM_NAME = "gpt4all-falcon-newbpe-q4_0.gguf"
 
 def file_download(source, path):
     downloader = FileDownloader(path)
-    downloader(source)
+    return downloader(source)
 
 
-def get_sentences():
-    parser = ToyPdfParser()
-    parser.hello()
+def get_sentences(filepath):
+    parser = ToyPdfParser(filepath)
+    return parser.get_sentences()
 
 
 def get_embeddings():
@@ -52,7 +52,7 @@ def main():
     pdf_filename = file_download(source, "data")
 
     # Document parsing
-    get_sentences()
+    sentences = get_sentences(f"{pdf_filename}")
 
     # Getting vectors
     get_embeddings()
