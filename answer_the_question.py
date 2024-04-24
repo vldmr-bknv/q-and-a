@@ -4,6 +4,7 @@ import os
 from src.downloaders.FileDownloader import FileDownloader
 from src.parsers.ToyPdfParser import ToyPdfParser
 from src.embedders.TestEmbedder import TestEmbedder
+from langchain_community.vectorstores import FAISS
 
 LLM_NAME = "gpt4all-falcon-newbpe-q4_0.gguf"
 
@@ -15,11 +16,6 @@ def file_download(source, path):
 def get_sentences(filepath):
     parser = ToyPdfParser(filepath)
     return parser.get_sentences()
-
-
-def get_embeddings():
-    embedder = TestEmbedder()
-    embedder.hello()
 
 
 def main():
@@ -44,18 +40,20 @@ def main():
     source = args['source']
     question = args['question']
     device = args['device']
+    if device == 'gpu': device = 'cuda'
 
     if LLM_NAME not in os.listdir('.'):
         print("LLM not found!")
     
-    # File (model and documet downloading)
+
     pdf_filename = file_download(source, "data")
-
-    # Document parsing
     sentences = get_sentences(f"{pdf_filename}")
+    embedder = TestEmbedder(device)
+    embeddings = embedder()
+    vector = FAISS.from_texts(sentences, embeddings)
+    print(vector)
+    
 
-    # Getting vectors
-    get_embeddings()
 
 
 if __name__=='__main__':
