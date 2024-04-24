@@ -5,7 +5,7 @@ import logging
 logger = logging.getLogger('PDF PARSER')
 logger.setLevel(logging.DEBUG)
 log_channel = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
 log_channel.setFormatter(formatter)
 logger.addHandler(log_channel)
 
@@ -16,15 +16,21 @@ except LookupError:
 
 
 class ToyPdfParser:
+    '''A class used to cast a PDF to a string type and tokenize it.'''
 
     def __init__(self, filepath):
         '''
-        
+        Parameters
+        ----------
+
+        filepath : str
+            PDF-file local path
         '''
         self.filepath = filepath
 
 
     def get_sentences(self):
+        '''Tokenizes text into sentences.'''
 
         try:
             loader = PyPDFLoader(self.filepath)
