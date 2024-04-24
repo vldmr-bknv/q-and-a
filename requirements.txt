@@ -1,0 +1,10 @@
+langchain==0.1.16
+langchain-community==0.0.34
+langchain-core==0.1.45
+nltk==3.8.1
+numpy==1.26.4
+wget==3.2
+sentence-transformers==2.7.0
+faiss-cpu==1.8.0
+pypdf==4.2.0
+gpt4all
