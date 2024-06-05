@@ -48,9 +48,20 @@ def main():
     arg_parser = argparse.ArgumentParser(description="The program answers the question about the document.",
                                         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    arg_parser.add_argument("-s", "--source", type=str, help="Link to document.") 
-    arg_parser.add_argument("-q", "--question", type=str, help="Question about the context of the document.")
-    arg_parser.add_argument("-d", "--device", type=str, help="Computing device.", choices=['cpu', 'gpu'])
+    arg_parser.add_argument("-s", "--source", 
+                            type=str, 
+                            help="Link to document.", 
+                            required=True) 
+    arg_parser.add_argument("-q", "--question",
+                            type=str,
+                            help="Question about the context of the document.",
+                            required=True)
+    arg_parser.add_argument("-d",
+                            "--device",
+                            type=str,
+                            help="Computing device.",
+                            choices=['cpu', 'gpu'],
+                            required=True)
     args = vars(arg_parser.parse_args())
     
     source = args['source']
